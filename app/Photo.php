@@ -9,4 +9,10 @@ class Photo extends Model
     protected $fillable = [
         'file'
     ];
+
+    protected $uploads = '/edwin_laravel/public/images/';
+
+    public function getFileAttribute($file){
+        return $this->uploads . $file;
+    }
 }
