@@ -22,7 +22,7 @@
           <td>{{$post->id}}</td>
           <td>{{$post->user->name}}</td>
           <td>{{$post->title}}</td>
-          <td>{{$post->category_id}}</td>
+          <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
           <td><img src="{{$post->photo ? URL::asset('/images/'.$post->photo->file) : 'http://via.placeholder.com/50x50'}}" style="max-height:50px" /></td>
           <td>{{$post->body}}</td>
           <td>{{$post->created_at->diffForHumans()}}</td>
