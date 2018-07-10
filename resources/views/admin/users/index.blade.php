@@ -3,6 +3,10 @@
 @section('content')
 
     <h1>Users</h1>
+
+    @if(Session::has('deleted_user'))
+        <p class="alert alert-success text-center">{{session('deleted_user')}}</p>
+    @endif
     <table class="table table-hover">
         <thead>
             <tr>
@@ -21,7 +25,7 @@
                 @foreach($users as $user)
                     <tr>
                         <td>{{$user->id}}</td>
-                        <td><img src="{{$user->photo ? $user->photo->file : 'http://via.placeholder.com/50x50'}}" style="max-height:50px" /></td>
+                        <td><img src="{{$user->photo ? URL::asset('/images/'.$user->photo->file) : 'http://via.placeholder.com/50x50'}}" style="max-height:50px" /></td>
                         <td><a href="{{route('admin.users.edit',$user->id)}}">{{$user->name}}</a></td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->role->name}}</td>
